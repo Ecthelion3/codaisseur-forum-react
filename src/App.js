@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux'
+import Questions from './containers/Questions'
 
-class App extends React.Component {
-    render() {
-        return (
-            <h1>Hello World!</h1>
-        );
-    }
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Questions/>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
