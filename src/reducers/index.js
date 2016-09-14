@@ -1,7 +1,13 @@
-// import status from './status'
+import authenticated from './authenticated'
+import currentUser from './currentUser'
+import formErrors from './formErrors'
+import loading from './loading'
 import questions from './questions'
 
 module.exports = {
-  // status,
+  authenticated,
+  currentUser,
+  formErrors,
+  loading,
   questions,
 }
