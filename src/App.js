@@ -2,7 +2,20 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import $ from 'jquery'
+import RaisedButton from 'material-ui/RaisedButton'
+import headerStyle from './styles/headers'
+
+import Header from './containers/Header'
+import SignInOrUp from './containers/SignInOrUp'
+
 import getQuestions from './actions/get-questions'
+
+const styles = {
+  message: {
+    textAlign: 'center',
+    marginTop: '3rem',
+  }
+}
 
 class App extends Component {
   componentDidMount() {
@@ -16,14 +29,12 @@ class App extends Component {
   }
 
   render() {
+    const { authenticated } = this.props
+    
     return (
       <div>
-        <h1>App</h1>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/questions">Questions</Link></li>
-        </ul>
-        { this.props.children }
+        <Header/>
+        { authenticated ? this.props.children : <SignInOrUp/>}
       </div>
     )
   }
@@ -31,12 +42,14 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    authenticated: state.authenticated,
     questions: state.questions,
     getQuestions: state.getQuestions,
   }
 }
 
 App.propTypes = {
+  authenticated: PropTypes.bool.isRequired,
   questions: PropTypes.array.isRequired,
   getQuestions: PropTypes.func.isRequired,
 }
