@@ -33,6 +33,7 @@ function requireAuth(nextState, replace) {
 
 import App from './App'
 import Questions from './containers/Questions'
+import NewQuestion from './containers/NewQuestion'
 import Question from './containers/Question'
 
 ReactDOM.render(
@@ -41,6 +42,7 @@ ReactDOM.render(
       <Router history={history}>
         <Route path="/" component={App}>
           <Route path="questions" component={Questions}/>
+          <Route path="question/new" component={NewQuestion}/>
           <Route path="question/:questionId" component={Question}/>
         </Route>
       </Router>

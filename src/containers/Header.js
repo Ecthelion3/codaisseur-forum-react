@@ -21,6 +21,7 @@ class Header extends Component {
         <ToolbarGroup>
           <RaisedButton linkbutton containerElement={<Link to="/" />} label="Home" primary={true}/>
           <RaisedButton linkbutton containerElement={<Link to="/questions" />} label="Questions" primary={true}/>
+          <RaisedButton linkbutton containerElement={<Link to="/question/new" />} label="New" primary={false}/>
         </ToolbarGroup>
       </Toolbar>
     )

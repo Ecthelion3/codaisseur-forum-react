@@ -10,6 +10,9 @@ import SignInOrUp from './containers/SignInOrUp'
 
 import getQuestions from './actions/get-questions'
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
 const styles = {
   message: {
     textAlign: 'center',
@@ -30,7 +33,7 @@ class App extends Component {
 
   render() {
     const { authenticated } = this.props
-    
+
     return (
       <div>
         <Header/>

@@ -15,9 +15,9 @@ class Questions extends Component {
         method: 'GET',
         url: 'http://localhost:4000/questions.json',
         headers: {
-            'Content-Type': 'application/json',
-            'X-User-Email': 'matthijs@test.com',
-            'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+          'Content-Type': 'application/json',
+          'X-User-Email': 'matthijs@test.com',
+          'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
         }
     }, function(data) {
       getQuestions({
