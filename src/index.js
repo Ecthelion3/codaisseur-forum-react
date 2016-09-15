@@ -14,7 +14,10 @@ const reducer = combineReducers(
   }
 ))
 const devTools = window.devToolsExtension ? window.devToolsExtension() : f => f
-const enhancer = compose(devTools)
+const enhancer = compose(
+  applyMiddleware(ReduxThunk),
+  devTools,
+)
 // Note: passing enhancer as the last argument requires redux@>=3.1.0
 const store = createStore(reducer, enhancer)
 const history = syncHistoryWithStore(browserHistory, store)

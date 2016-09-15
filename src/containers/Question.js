@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
 
+import headerStyle from '../styles/headers'
+
 class Question extends Component {
   render () {
     const { questions } = this.props
@@ -14,7 +16,7 @@ class Question extends Component {
 
     return (
       <div>
-        <h2>{title}</h2>
+        <h2 style={headerStyle}>{title}</h2>
         <p>{body}</p>
         <h3>Answers</h3>
         {answers.map((answer, index) => {
