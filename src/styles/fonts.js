@@ -1,4 +1,4 @@
 export default {
-  sansSerif: '"Poppins", sans-serif',
+  sansSerif: '"Roboto", sans-serif',
   smallSize: '10px'
 };

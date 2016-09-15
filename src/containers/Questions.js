@@ -11,7 +11,15 @@ class Questions extends Component {
   componentDidMount() {
     const { getQuestions } = this.props
 
-    $.get("http://localhost:4000/questions.json", function(data) {
+    $.get({
+      method: 'GET',
+      url: 'http://localhost:4000/questions.json',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Email': 'matthijs@test.com',
+        'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+      }
+    }, function(data) {
       getQuestions({
         questions: data.questions
       })
@@ -32,7 +40,7 @@ class Questions extends Component {
 
     return (
       <div>
-        <h2 style={headerStyle}>Questions</h1>
+        <h2 style={headerStyle}>Questions</h2>
         { questions.map(this.renderQuestion.bind(this)) }
       </div>
     )
@@ -41,14 +49,16 @@ class Questions extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    questions: state.questions,
+    currentUser: state.currentUser,
     getQuestions: state.getQuestions,
+    questions: state.questions,
   }
 }
 
 Questions.propTypes = {
-  questions: PropTypes.array.isRequired,
+  currentUser: PropTypes.object.isRequired,
   getQuestions: PropTypes.func.isRequired,
+  questions: PropTypes.array.isRequired,
 }
 
 export default connect(mapStateToProps, { getQuestions })(Questions)

@@ -12,13 +12,14 @@ class Question extends Component {
     }
     const { questionId } = this.props.params
     const question = questions.find(checkId)
-    const { title, body, answers } = question
+    const { title, topic, body, answers } = question
 
     return (
       <div>
         <h2 style={headerStyle}>{title}</h2>
+        <i>{topic.title}</i>
         <p>{body}</p>
-        <h3>Answers</h3>
+        <h3 style={headerStyle}>Answers</h3>
         {answers.map((answer, index) => {
           return (
             <p><small>{answer.body}</small></p>

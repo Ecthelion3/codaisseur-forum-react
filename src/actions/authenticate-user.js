@@ -10,6 +10,8 @@ export default function authenticateUser(user) {
   console.log("User Data: ", user)
 
   return dispatch =>
+  // dispatch(resetFormErrors())
+  // dispatch(appLoading())
   fetch('http://localhost:4000/users/sign_in', {
     method: 'POST',
     headers: {

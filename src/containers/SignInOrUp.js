@@ -10,9 +10,6 @@ import authenticateUser from '../actions/authenticate-user'
 import setFormErrors from '../actions/set-form-errors'
 import resetFormErrors from '../actions/reset-form-errors'
 
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
-
 const errorMargin = {
   marginTop: '2rem'
 }
