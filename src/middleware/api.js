@@ -16,7 +16,7 @@
 //         storage: window.localStorage,
 //       }));
 //   }
-// 
+//
 //   service(serviceName) {
 //     return this.app.service(serviceName)
 //   }
