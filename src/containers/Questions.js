@@ -9,27 +9,21 @@ import headerStyle from '../styles/headers'
 
 class Questions extends Component {
   componentDidMount() {
-    const { getQuestions, currentUser } = this.props
-    const { email, password } = currentUser
+    const { getQuestions } = this.props
+
     $.get({
-        method: 'GET',
-        url: 'http://localhost:4000/questions.json',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-User-Email': 'matthijs@test.com',
-          'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
-        }
+      method: 'GET',
+      url: 'http://localhost:4000/questions.json',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Email': 'matthijs@test.com',
+        'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+      }
     }, function(data) {
       getQuestions({
         questions: data.questions
       })
     })
-
-    // $.get("http://localhost:4000/questions.json", function(data) {
-    //   getQuestions({
-    //     questions: data.questions
-    //   })
-    // })
   }
 
   renderQuestion(question) {

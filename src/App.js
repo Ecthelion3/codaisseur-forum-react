@@ -21,15 +21,15 @@ const styles = {
 }
 
 class App extends Component {
-  componentDidMount() {
-    const { getQuestions } = this.props
-
-    $.get("http://localhost:4000/questions.json", function(data) {
-      getQuestions({
-        questions: data.questions
-      })
-    })
-  }
+  // componentDidMount() {
+  //   const { getQuestions } = this.props
+  //
+  //   $.get("http://localhost:4000/questions.json", function(data) {
+  //     getQuestions({
+  //       questions: data.questions
+  //     })
+  //   })
+  // }
 
   render() {
     const { authenticated } = this.props

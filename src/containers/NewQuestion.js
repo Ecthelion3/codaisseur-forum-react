@@ -8,10 +8,14 @@ import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
+import SelectField from 'material-ui/SelectField'
+import MenuItem from 'material-ui/MenuItem'
 
 import headerStyle from '../styles/headers'
 
 import resetFormErrors from '../actions/reset-form-errors'
+import getTopics from '../actions/get-topics'
+import chooseTopic from '../actions/choose-topic'
 
 const errorMargin = {
   marginTop: '2rem'
@@ -29,6 +33,29 @@ const buttonStyle = {
 }
 
 class NewQuestion extends Component {
+  constructor() {
+    super();
+    this.state = {value: 1};
+  }
+
+  componentDidMount() {
+    const { getTopics } = this.props
+    console.log(this.props)
+
+    $.get({
+      method: 'GET',
+      url: 'http://localhost:4000/topics.json',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-User-Email': 'matthijs@test.com',
+        'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+      }
+    }, function(data) {
+      getTopics({
+        topics: data.topics
+      })
+    })
+  }
 
   submitForm() {
     return this.saveQuestion()
@@ -38,6 +65,7 @@ class NewQuestion extends Component {
     this.props.resetFormErrors()
 
     const { title, body } = this.formValues()
+    const { currentTopic } = this.props
 
     $.ajax({
       method: 'POST',
@@ -51,8 +79,8 @@ class NewQuestion extends Component {
         question: {
           title: title,
           body: body,
-          topic_id: '1',
-          user_id: '1'
+          topic_id: currentTopic,
+          user_id: 1
         }
       })
     })
@@ -73,8 +101,22 @@ class NewQuestion extends Component {
     }
   }
 
+  handleChange(event, index, value) {
+    const { chooseTopic } = this.props
+    console.log('Current topic:', value)
+    chooseTopic(value)
+  }
+
+  renderTopic(topic) {
+    const { id, title } = topic
+    return (
+      <MenuItem key={id} value={id} primaryText={title} />
+    )
+  }
+
   render() {
-    const { formErrors } = this.props
+    const { formErrors, topics, currentTopic } = this.props
+    console.log('Topics:', topics)
 
     return(
       <Paper style={dialogStyle}>
@@ -85,6 +127,9 @@ class NewQuestion extends Component {
             ref="title"
             hintText="Title"
             errorText={ formErrors.title }/>
+          <SelectField value={currentTopic} onChange={this.handleChange.bind(this)}>
+            { topics.map(this.renderTopic.bind(this)) }
+          </SelectField>
         </div>
         <div>
           <TextField
@@ -110,14 +155,23 @@ class NewQuestion extends Component {
 
 const mapStateToProps = (state) => {
   return {
+    chooseTopic: state.chooseTopic,
+    currentTopic: state.currentTopic,
     currentUser: state.currentUser,
     formErrors: state.formErrors,
+    getTopics: state.getTopics,
+    topics: state.topics,
   }
 }
 
 NewQuestion.propTypes = {
+  chooseTopic: PropTypes.func.isRequired,
+  currentTopic: PropTypes.number.isRequired,
   currentUser: PropTypes.object.isRequired,
   formErrors: PropTypes.object.isRequired,
+  getTopics: PropTypes.func.isRequired,
+  resetFormErrors: PropTypes.func.isRequired,
+  topics: PropTypes.array.isRequired,
 }
 
-export default connect(mapStateToProps, { resetFormErrors })(NewQuestion)
+export default connect(mapStateToProps, { chooseTopic, getTopics, resetFormErrors })(NewQuestion)
