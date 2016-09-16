@@ -1,21 +1,24 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
+
+import FlatButton from 'material-ui/FlatButton'
 
 import headerStyle from '../styles/headers'
 
 class Question extends Component {
   render () {
     const { questions } = this.props
-
     function checkId(question){
       return question.id == questionId
     }
     const { questionId } = this.props.params
     const question = questions.find(checkId)
-    const { title, topic, body, answers } = question
+    const { id, title, topic, body, answers } = question
 
     return (
       <div>
+        <FlatButton linkbutton containerElement={<Link to={`/question/${id}/edit`} />} label="Edit" primary={false}/>
         <h2 style={headerStyle}>{title}</h2>
         <i>{topic.title}</i>
         <p>{body}</p>
