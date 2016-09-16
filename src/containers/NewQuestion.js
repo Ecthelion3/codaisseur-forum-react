@@ -40,7 +40,6 @@ class NewQuestion extends Component {
 
   componentDidMount() {
     const { getTopics } = this.props
-    console.log(this.props)
 
     $.get({
       method: 'GET',
@@ -103,7 +102,6 @@ class NewQuestion extends Component {
 
   handleChange(event, index, value) {
     const { chooseTopic } = this.props
-    console.log('Current topic:', value)
     chooseTopic(value)
   }
 
@@ -116,7 +114,6 @@ class NewQuestion extends Component {
 
   render() {
     const { formErrors, topics, currentTopic } = this.props
-    console.log('Topics:', topics)
 
     return(
       <Paper style={dialogStyle}>
