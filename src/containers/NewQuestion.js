@@ -47,7 +47,7 @@ class NewQuestion extends Component {
       headers: {
         'Content-Type': 'application/json',
         'X-User-Email': 'matthijs@test.com',
-        'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+        'X-User-Token': 'qxsnKgehcWu2vekrta-c'
       }
     }, function(data) {
       getTopics({
@@ -72,7 +72,7 @@ class NewQuestion extends Component {
       headers: {
         'Content-Type': 'application/json',
         'X-User-Email': 'matthijs@test.com',
-        'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+        'X-User-Token': 'qxsnKgehcWu2vekrta-c'
       },
       data: JSON.stringify({
         question: {
@@ -85,7 +85,7 @@ class NewQuestion extends Component {
     })
     .done(function(data) {
       console.log('successfully added',data);
-      browserHistory.push('/questions')
+      browserHistory.push('/')
     })
     .fail(function(error) {
       console.log(error);
