@@ -32,20 +32,23 @@ function requireAuth(nextState, replace) {
 }
 
 import App from './App'
-import EditQuestion from './containers/EditQuestion'
-import NewQuestion from './containers/NewQuestion'
-import Question from './containers/Question'
+import QuestionsWrapper from './containers/QuestionsWrapper'
 import Questions from './containers/Questions'
+import Question from './containers/Question'
+import NewQuestion from './containers/NewQuestion'
+import EditQuestion from './containers/EditQuestion'
 
 ReactDOM.render(
   <Provider store={store}>
     <MuiThemeProvider>
       <Router history={history}>
-        <Route path="/" component={App}>
-          <Route path="questions" component={Questions}/>
-          <Route path="question/new" component={NewQuestion}/>
-          <Route path="question/:questionId/edit" component={EditQuestion}/>
-          <Route path="question/:questionId" component={Question}/>
+        <Route path="" component={App}>
+            <Route path="" component={QuestionsWrapper}>
+            <Route path="/" component={Questions}/>
+            <Route path="question/new" component={NewQuestion}/>
+            <Route path="question/:questionId/edit" component={EditQuestion}/>
+            <Route path="question/:questionId" component={Question}/>
+          </Route>
         </Route>
       </Router>
     </MuiThemeProvider>

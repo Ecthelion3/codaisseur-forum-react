@@ -16,11 +16,11 @@ export default function authenticateUser(user) {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       user: user
-    }),
+    })
   })
   .then((response) => {
     console.log('Response:', response)

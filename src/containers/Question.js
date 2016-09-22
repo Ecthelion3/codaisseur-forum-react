@@ -18,7 +18,7 @@ class Question extends Component {
       headers: {
         'Content-Type': 'application/json',
         'X-User-Email': 'matthijs@test.com',
-        'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+        'X-User-Token': 'qxsnKgehcWu2vekrta-c'
       },
       contentType: "application/json",
       dataType: "JSON",
@@ -51,7 +51,7 @@ class Question extends Component {
         <h3 style={headerStyle}>Answers</h3>
         {answers.map((answer, index) => {
           return (
-            <p><small>{answer.body}</small></p>
+            <p key={index}><small>{answer.body}</small></p>
           )
         })}
       </div>

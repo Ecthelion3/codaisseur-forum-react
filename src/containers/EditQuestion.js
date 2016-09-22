@@ -74,7 +74,7 @@ class EditQuestion extends Component {
       headers: {
         'Content-Type': 'application/json',
         'X-User-Email': 'matthijs@test.com',
-        'X-User-Token': 'XitDbW6n2TSa2JxhmBQ4'
+        'X-User-Token': 'qxsnKgehcWu2vekrta-c'
       },
       contentType: "application/json",
       dataType: "JSON",
