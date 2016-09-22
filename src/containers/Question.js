@@ -4,7 +4,6 @@ import { browserHistory, Link } from 'react-router'
 import $ from 'jquery'
 
 import FlatButton from 'material-ui/FlatButton'
-
 import headerStyle from '../styles/headers'
 
 class Question extends Component {
@@ -43,8 +42,14 @@ class Question extends Component {
 
     return (
       <div>
-        <FlatButton linkbutton containerElement={<Link to={`/question/${id}/edit`} />} label="Edit" primary={false}/>
-        <FlatButton linkbutton onClick={this.deleteQuestion.bind(this)} label="Delete" primary={false}/>
+        <div>
+          <FlatButton linkbutton containerElement={<Link to={`/question/${id}/edit`} />} label="Edit" primary={false}/>
+        </div>
+        <div>
+          <FlatButton linkbutton onClick={this.deleteQuestion.bind(this)} label="Delete" primary={false}/>
+        </div>
+        <div>
+        </div>
         <h2 style={headerStyle}>{title}</h2>
         <i>{topic.title}</i>
         <p>{body}</p>
